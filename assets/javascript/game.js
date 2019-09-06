@@ -8,7 +8,7 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
     var wins = 0;
     var losses = 0;
     var left = 9;
-    var userguesses = userguesses;
+    var userguesses = "";
 
 //computer makes one random letter choice 
 //when userguesses computer choice: computer picks new letter, wins++
@@ -18,46 +18,42 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
     document.onkeyup = function(event) {
-    var userGuess = event.key;
-    if(userGuess === computerGuess){
-        console.log(userGuess + computerGuess);
-        wins++;
-        computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-     } else if (userGuess !== computerGuess){
-        console.log(userGuess + computerGuess);
-        losses++;
-     } else if (userGuess !== computerGuess){
-        console.log(userGuess + computerGuess);
-        left--;
-        console.log(userGuess + computerGuess);
-        userGuess;
-     }
-    
+        var userGuess = event.key;
+        console.log(computerGuess);
+        if(userGuess === computerGuess){
+            wins++;
+            left = 9;
+            userguesses = "";
+            computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-    var winsText = document.getElementById("wins");
-    winsText.textContent = wins;
+        } else if (userGuess !== computerGuess){
+            left--;
+            userguesses = userguesses + " " + userGuess;
+        }
+        
+        if(left === 0){
+            losses++;
+            left = 9;
+            userguesses = "";
+        }
 
-    var lossesText = document.getElementById("losses");
-    lossesText.textContent = losses;
+        
 
-    var leftText = document.getElementById("left");
-    leftText.textContent = left--;
+        var winsText = document.getElementById("wins");
+        winsText.textContent = wins;
 
-    var userguessesText = document.getElementById("userguesses");
-    userguessesText.textContent = userGuess;
+        var lossesText = document.getElementById("losses");
+        lossesText.textContent = losses;
+
+        var leftText = document.getElementById("left");
+        leftText.textContent = left;
+
+        var userguessesText = document.getElementById("userguesses");
+        userguessesText.textContent = userguesses;
 
     };
 
-    // Game over hidden tag
 
-    function myFunction() {
-        var x = document.getElementById("myDIV");
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
-        }
-      }
 
 
 

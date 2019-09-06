@@ -22,4 +22,9 @@ var computerChoices = ["a"];
 
 
 
+ // I need to allow 9 choices per round
+ // I need to capture guesses made and display on screen
+ // I need to display wins, losses, guesses left
+
+
 

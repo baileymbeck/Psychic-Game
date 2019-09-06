@@ -22,13 +22,13 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
     if(userGuess === computerGuess){
         console.log(userGuess + computerGuess);
         wins++;
-        
+        computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
      } else if (userGuess !== computerGuess){
         console.log(userGuess + computerGuess);
         losses++;
      } else if (userGuess !== computerGuess){
         console.log(userGuess + computerGuess);
-        left - left;
+        left--;
         console.log(userGuess + computerGuess);
         userGuess;
      }
@@ -41,12 +41,23 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
     lossesText.textContent = losses;
 
     var leftText = document.getElementById("left");
-    leftText.textContent = left;
+    leftText.textContent = left--;
 
     var userguessesText = document.getElementById("userguesses");
     userguessesText.textContent = userGuess;
 
     };
+
+    // Game over hidden tag
+
+    function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
 
 
 
